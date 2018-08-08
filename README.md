@@ -4,8 +4,8 @@ Shell script to install a [Dividend.Cash Masternode](https://dividend.cash/) on 
 ***
 ## Installation:
 ```
-git clone https://github.com/dividendcash/dividendcash.git
-cd dividendcash
+git clone https://github.com/dividendcash/masternodeinstall.git
+cd masternodeinstall
 bash dvd.sh
 ```
 ***
