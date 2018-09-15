@@ -4,7 +4,8 @@ Shell script to install a [Dividend.Cash Masternode](https://dividend.cash/) on 
 ***
 ## Installation:
 ```
-bash <(curl -s https://raw.githubusercontent.com/dividendcash/masternodeinstall/master/dvd.sh)
+wget https://raw.githubusercontent.com/dividendcash/masternodeinstall/master/dvd.sh
+sudo chmod +x dvd.sh && sudo bash dvd.sh
 ```
 ***
 
@@ -19,9 +20,19 @@ After the MN is up and running, you need to configure the desktop wallet accordi
 6. Type the following command: **masternode outputs**
 7. Go to  ** Tools -> "Open Masternode Configuration File"
 8. Add the following entry:
+
 ```
 Alias Address Privkey TxHash Output_index
 ```
+
+Your entry should look something similar to this --
+
+```
+MN1 0.0.0.0:19997 88ET491cBrrZaKoCKyTdjvZStvM97iB102HS82AJDwFEE1jgP AZ30b9a06a54030315ea8110ab2670808946bc3a3640e1010292909343f876 0
+
+```
+
+
 * Alias: **MN1**
 * Address: **VPS_IP:PORT**
 * Privkey: **Masternode Private Key**
