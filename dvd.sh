@@ -229,9 +229,11 @@ fi
 }
 
 function detect_ubuntu() {
- if [[ $(lsb_release -d) == *16.04* ]]; then
+ if [[ $(lsb_release -d) == *18.* ]]; then
+   UBUNTU_VERSION=18
+ elif [[ $(lsb_release -d) == *16.* ]]; then
    UBUNTU_VERSION=16
- elif [[ $(lsb_release -d) == *14.04* ]]; then
+ elif [[ $(lsb_release -d) == *14.* ]]; then
    UBUNTU_VERSION=14
 else
    echo -e "${RED}You are not running Ubuntu 14.04 or 16.04 Installation is cancelled.${NC}"
@@ -250,12 +252,13 @@ if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
   echo -e "${RED}$COIN_NAME is already installed.${NC}"
   exit 1
 fi
+
 }
 
 function prepare_system() {
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
 apt-get update >/dev/null 2>&1
-apt-get install -y wget curl binutils >/dev/null 2>&1
+apt-get install -y wget curl binutils net-tools >/dev/null 2>&1
 }
 
 function important_information() {
@@ -263,7 +266,11 @@ function important_information() {
  echo -e "================================================================================"
  echo -e "$COIN_NAME Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
  echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
- if (( $UBUNTU_VERSION == 16 )); then
+ if (( $UBUNTU_VERSION == 18 )); then
+   echo -e "Start: ${RED}service $COIN_NAME start${NC}"
+   echo -e "Stop: ${RED}service $COIN_NAME stop${NC}"
+   echo -e "Status: ${RED}service $COIN_NAME status${NC}"
+ elif (( $UBUNTU_VERSION == 16 )); then
    echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
    echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
    echo -e "Status: ${RED}systemctl status $COIN_NAME.service${NC}"
@@ -289,7 +296,7 @@ function setup_node() {
   update_config
   enable_firewall
   important_information
-  if (( $UBUNTU_VERSION == 16 )); then
+  if (( $UBUNTU_VERSION == 16 ) || ($UBUNTU_VERSION == 18)); then
     configure_systemd
   else
     configure_startup
