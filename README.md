@@ -4,8 +4,7 @@ Shell script to install a [Dividend.Cash Masternode](https://dividend.cash/) on 
 ***
 ## Installation:
 ```
-wget https://raw.githubusercontent.com/dividendcash/masternodeinstall/master/dvd.sh
-sudo chmod +x dvd.sh && sudo bash dvd.sh
+bash <(curl -s https://raw.githubusercontent.com/dividendcash/masternodeinstall/master/dvd.sh)
 ```
 ***
 
