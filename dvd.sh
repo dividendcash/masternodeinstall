@@ -4,7 +4,7 @@ CONFIG_FILE='dividendcash.conf'
 CONFIGFOLDER='/root/.dividendcash'
 COIN_DAEMON='/usr/local/bin/dividendcashd'
 COIN_CLI='/usr/local/bin/dividendcash-cli'
-COIN_REPO='https://github.com/dividendcash/DividendCash/releases/download/1.1.1/dividendcash-1.1.1-x86_64-linux-gnu.tar.gz'
+COIN_REPO='https://github.com/dividendcash/DividendCash/releases/download/v1.2.0/dividendcash-1.2.0-x86_64-linux-gnu.tar.gz'
 COIN_NAME='DividendCash'
 COIN_PORT=19997
 
